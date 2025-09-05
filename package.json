@@ -4,7 +4,7 @@
   "description": "AsyncAPIスキーマからTypeScriptコードを自動生成するCLIツール",
   "main": "src/cli.ts",
   "bin": {
-    "ws-ts-gen": "dist/cli.ts"
+    "ws-ts-gen": "dist/cli.js"
   },
   "scripts": {
     "dev": "ts-node src/cli.ts",

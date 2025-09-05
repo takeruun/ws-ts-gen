@@ -70,7 +70,9 @@ export interface AsyncAPIDocument {
 export interface GeneratorOptions {
   schema: string;
   out: string;
+  mode: 'server' | 'client' | 'both';
   generateTypes?: boolean;
   generateServer?: boolean;
+  generateClient?: boolean;
   generateHandlers?: boolean;
 }

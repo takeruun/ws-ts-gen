@@ -74,8 +74,8 @@ export class IndexGenerator {
     index.push('  process.exit(0);');
     index.push('});');
     
-    const outputPath = path.join(outputDir, 'index.ts');
+    const outputPath = path.join(outputDir, 'server-sample.ts');
     writeFileSync(outputPath, index.join('\n'));
-    console.log(`Generated index at: ${outputPath}`);
+    console.log(`Generated server sample at: ${outputPath}`);
   }
 }

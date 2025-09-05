@@ -6,7 +6,8 @@ info:
 
 servers:
   local:
-    host: localhost:5000
+    host: localhost
+    port: 5001
     protocol: ws
     pathname: /ws
     description: Local WebSocket server
@@ -33,6 +34,14 @@ operations:
     messages:
       - $ref: "#/channels/websocket/messages/ping"
 
+  sendError:
+    action: send
+    description: Server sends an error message to the client
+    channel:
+      $ref: "#/channels/websocket"
+    messages:
+      - $ref: "#/channels/websocket/messages/error"
+
   receivePong:
     action: receive
     description: Client receives a pong message from the server
@@ -40,6 +49,14 @@ operations:
       $ref: "#/channels/websocket"
     messages:
       - $ref: "#/channels/websocket/messages/pong"
+
+  receiveError:
+    action: receive
+    description: Client receives an error message from the server
+    channel:
+      $ref: "#/channels/websocket"
+    messages:
+      - $ref: "#/channels/websocket/messages/error"
 
 components:
   messages:
@@ -76,9 +93,6 @@ components:
         type:
           type: string
           const: ping
-        timestamp:
-          type: number
-          description: Unix timestamp
 
     PongMessage:
       type: object

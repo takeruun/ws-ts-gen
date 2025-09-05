@@ -11,7 +11,7 @@ AsyncAPIスキーマ（YAML/JSON）からTypeScriptコードを自動生成す�
 ## 使い方
 
 ```bash
-npm install
+yarn install
 npx ws-ts-gen generate --schema ./asyncapi.yaml --out ./src/generated
 ```
 
@@ -25,7 +25,7 @@ npx ws-ts-gen generate --schema ./asyncapi.yaml --out ./src/generated
 ## 開発起動
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 ## ライセンス

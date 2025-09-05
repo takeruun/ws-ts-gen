@@ -1,1 +1,25 @@
-{  "name": "ws-ts-gen",  "version": "0.1.0",  "description": "AsyncAPIスキーマからTypeScriptコードを自動生成するCLIツール",  "main": "src/cli.ts",  "bin": {    "ws-ts-gen": "src/cli.ts"  },  "scripts": {    "dev": "ts-node src/cli.ts",    "build": "tsc",    "lint": "eslint . --ext .ts"  },  "dependencies": {    "js-yaml": "^4.1.0"  },  "devDependencies": {    "typescript": "^5.3.3",    "ts-node": "^10.9.1",    "eslint": "^8.57.0"  },  "license": "MIT"}
+{
+  "name": "ws-ts-gen",
+  "version": "0.1.0",
+  "description": "AsyncAPIスキーマからTypeScriptコードを自動生成するCLIツール",
+  "main": "src/cli.ts",
+  "bin": {
+    "ws-ts-gen": "dist/cli.ts"
+  },
+  "scripts": {
+    "dev": "ts-node src/cli.ts",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^24.3.1",
+    "eslint": "^9.34.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  },
+  "license": "MIT"
+}

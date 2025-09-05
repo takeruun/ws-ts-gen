@@ -1,0 +1,109 @@
+asyncapi: "3.0.0"
+info:
+  title: WebSocket API
+  version: "1.0.0"
+  description: WebSocket API
+
+servers:
+  local:
+    host: localhost:5000
+    protocol: ws
+    pathname: /ws
+    description: Local WebSocket server
+
+defaultContentType: application/json
+
+channels:
+  websocket:
+    address: /ws
+    messages:
+      ping:
+        $ref: "#/components/messages/ping"
+      pong:
+        $ref: "#/components/messages/pong"
+      error:
+        $ref: "#/components/messages/error"
+
+operations:
+  sendPing:
+    action: send
+    description: Client sends a ping message to the server
+    channel:
+      $ref: "#/channels/websocket"
+    messages:
+      - $ref: "#/channels/websocket/messages/ping"
+
+  receivePong:
+    action: receive
+    description: Client receives a pong message from the server
+    channel:
+      $ref: "#/channels/websocket"
+    messages:
+      - $ref: "#/channels/websocket/messages/pong"
+
+components:
+  messages:
+    ping:
+      name: ping
+      title: Ping Message
+      summary: Client ping to keep connection alive
+      contentType: application/json
+      payload:
+        $ref: "#/components/schemas/PingMessage"
+
+    pong:
+      name: pong
+      title: Pong Message
+      summary: Server response to ping
+      contentType: application/json
+      payload:
+        $ref: "#/components/schemas/PongMessage"
+
+    error:
+      name: error
+      title: Error Message
+      summary: Error notification
+      contentType: application/json
+      payload:
+        $ref: "#/components/schemas/ErrorMessage"
+
+  schemas:
+    PingMessage:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          const: ping
+        timestamp:
+          type: number
+          description: Unix timestamp
+
+    PongMessage:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          const: pong
+        timestamp:
+          type: number
+          description: Unix timestamp
+
+    ErrorMessage:
+      type: object
+      required:
+        - type
+        - error
+      properties:
+        type:
+          type: string
+          const: error
+        error:
+          type: string
+          description: Error message
+        details:
+          type: object
+          description: Additional error details
